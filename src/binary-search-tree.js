@@ -64,31 +64,52 @@ class BinarySearchTree {
   }
 
   find(data) {
-    if(this.has(data)) {
-         if (this.rootElem.data === data) {return data}
 
-    doLeft(this.rootElem, cb(data));
-    function doLeft(node, cb) {
-      if (node) {
-        doLeft(node.left, cb(data));
-        cb(node.value);
-        doLeft(node.right, cb(data));
+    return searchWithin(this.rootElem, data);
+
+    function searchWithin(node, data) {
+      if (!node) {
+        return null;
       }
-    }
-    doRight(this.rootElem, cb(data));
-    function doRight(node, cb) {
-      if (node) {
-        doRight(node.right, cb(data));
-        cb(node.value);
-        doRight(node.left, cb(data));
+      if (node.data === data) {
+        return data;
       }
-    }
-    function cb(value) {
-      if (value === data) {return data};
-    }
+
+      return data < node.data
+        ? searchWithin(node.left, data)
+        : searchWithin(node.right, data);
+         
     }
 
-  return null;
+
+ 
+
+
+  //   if(this.has(data)) {
+  //        if (this.rootElem.data === data) {return data}
+
+  //   doLeft(this.rootElem, cb(data));
+  //   function doLeft(node, cb) {
+  //     if (node) {
+  //       doLeft(node.left, cb(data));
+  //       cb(node.value);
+  //       doLeft(node.right, cb(data));
+  //     }
+  //   }
+  //   doRight(this.rootElem, cb(data));
+  //   function doRight(node, cb) {
+  //     if (node) {
+  //       doRight(node.right, cb(data));
+  //       cb(node.value);
+  //       doRight(node.left, cb(data));
+  //     }
+  //   }
+  //   function cb(value) {
+  //     if (value === data) {return data};
+  //   }
+  //   }
+
+  // return null;
 
   }
 
