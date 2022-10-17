@@ -20,7 +20,7 @@ class BinarySearchTree {
   }
 
   root() {
-   return this.rootElem = this.rootElem ? this.rootElem.data : null;
+   return this.rootElem;
   }
 
   add(data) {
@@ -64,6 +64,8 @@ class BinarySearchTree {
   }
 
   find(data) {
+    if(this.has(data)) {
+         if (this.rootElem.data === data) {return data}
 
     doLeft(this.rootElem, cb(data));
     function doLeft(node, cb) {
@@ -82,10 +84,11 @@ class BinarySearchTree {
       }
     }
     function cb(value) {
-      if (value === data) {return true};
+      if (value === data) {return data};
     }
-    
-  return false;
+    }
+
+  return null;
 
   }
 
